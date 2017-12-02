@@ -25,7 +25,7 @@ public class WorldController : MonoBehaviour {
     {
         tileMapParentGo = new GameObject("TileMap");
 
-        World = new World();
+        World = World.Instance;
 
         // Create world tilemap
         tileMap = MapGenerator.GetWorldMap();
@@ -47,7 +47,7 @@ public class WorldController : MonoBehaviour {
         foreach (var character in World.Characters)
         {
             var charGo = new GameObject("CharGo_" + character.Role);
-            charGo.transform.position = VectorHelper.NewVector(character.Position);
+            charGo.transform.position = character.Position;
             var sr = charGo.AddComponent<SpriteRenderer>();
             sr.sprite = spriteList.FirstOrDefault(s => s.name == character.Role.ToLowerInvariant());
             sr.sortingLayerName = "Characters";

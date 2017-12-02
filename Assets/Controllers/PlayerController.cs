@@ -21,30 +21,39 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             playerGo.transform.position = playerGo.transform.position - new Vector3(Time.deltaTime * mvtMult, 0);
+            UpdateModel();
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             playerGo.transform.position = playerGo.transform.position + new Vector3(Time.deltaTime * mvtMult, 0);
+            UpdateModel();
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
             playerGo.transform.position = playerGo.transform.position + new Vector3(0, Time.deltaTime * mvtMult);
+            UpdateModel();
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             playerGo.transform.position = playerGo.transform.position - new Vector3(0, Time.deltaTime * mvtMult);
+            UpdateModel();
         }
     }
 
-    private void OnEnable()
+    private void UpdateModel()
     {
-        model = new PlayerCharacter("Mike", "husband", new Position { X = 5 , Y = 5});
+        model.UpdatePosition(playerGo.transform.position);
+    }
+
+    void OnEnable()
+    {
+        model = PlayerCharacter.Instance;
         playerGo = new GameObject("CharGo_" + model.Name);
 
         var sr = playerGo.AddComponent<SpriteRenderer>();
         sr.sprite = playerSprite;
         sr.sortingLayerName = "Characters";
 
-        playerGo.transform.position = VectorHelper.NewVector(model.Position);
+        playerGo.transform.position = model.Position;
     }
 }
