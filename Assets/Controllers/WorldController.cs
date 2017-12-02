@@ -39,6 +39,14 @@ public class WorldController : MonoBehaviour {
             sr.sprite = spriteList.FirstOrDefault(s => s.name == tile.TileType.ToString().ToLowerInvariant());
             sr.sortingLayerName = "Floor";
 
+            if (tile.TileType == TileType.Wall)
+            {
+                //var collider = tileGo.AddComponent<Collider2D>();
+                //collider.
+
+                var boxCollider = tileGo.AddComponent<BoxCollider2D>();
+            }
+
             // tidier in the projec hierarchy
             tileGo.transform.SetParent(tileMapParentGo.transform, true);
         }

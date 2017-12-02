@@ -54,6 +54,13 @@ public class PlayerController : MonoBehaviour
         sr.sprite = playerSprite;
         sr.sortingLayerName = "Characters";
 
+        var rigidBody = playerGo.AddComponent<Rigidbody2D>();
+        rigidBody.gravityScale = 0;
+        rigidBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
+        var coll = playerGo.AddComponent<Collider2D>();
+        
+
         playerGo.transform.position = model.Position;
     }
 }
