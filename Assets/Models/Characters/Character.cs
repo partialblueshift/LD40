@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class Character {
+public abstract class Character
+{
     public string Name { get; private set; }
     public string Role { get; private set; }
     public Position Position { get; private set; }

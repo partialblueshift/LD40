@@ -43,7 +43,7 @@ public class WorldController : MonoBehaviour {
             tileGo.transform.SetParent(tileMapParentGo.transform, true);
         }
 
-        // Place characters
+        // Place NPC
         foreach (var character in World.Characters)
         {
             var charGo = new GameObject("CharGo_" + character.Role);
@@ -52,7 +52,6 @@ public class WorldController : MonoBehaviour {
             sr.sprite = spriteList.FirstOrDefault(s => s.name == character.Role.ToLowerInvariant());
             sr.sortingLayerName = "Characters";
         }
-
-
+        
     }
 }

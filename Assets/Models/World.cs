@@ -7,7 +7,7 @@ public class World {
     private const int width = 30;
 
     private BankAccount account;
-    public readonly List<Character> Characters;
+    public readonly List<NPC> Characters;
 
     public World()
     {
@@ -18,15 +18,13 @@ public class World {
         account.Add(100000);
 
         // Create characters
-        Characters = new List<Character> {
-            new Character("Mike", "husband", new Position { X = 10, Y = 10 }),
-            new Character("Amanda", "wife", new Position { X = 11, Y = 10 }),
-            new Character("Zoe", "child", new Position { X = 12, Y = 10 })
+        Characters = new List<NPC> {
+            new NPC("Amanda", "wife", new Position { X = 11, Y = 10 }),
+            new NPC("Zoe", "child", new Position { X = 12, Y = 10 })
         };
 
         // Initialize floor plan (walls, furniture)
-
-
+        
     }
 
 }
