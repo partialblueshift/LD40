@@ -33,14 +33,26 @@ public class WorldController : MonoBehaviour {
         foreach (var tile in tileMap)
         {
             var tileGo = new GameObject("TileGo_" + tile.Position.X + "_" + tile.Position.Y);
-            tileGo.transform.position = new Vector2(tile.Position.X, tile.Position.Y);
+            tileGo.transform.position = VectorHelper.NewVector(tile.Position);
 
             var sr = tileGo.AddComponent<SpriteRenderer>();
             sr.sprite = spriteList.FirstOrDefault(s => s.name == tile.TileType.ToString().ToLowerInvariant());
+            sr.sortingLayerName = "Floor";
 
-            // tidier in the projec hhierarchie
+            // tidier in the projec hierarchy
             tileGo.transform.SetParent(tileMapParentGo.transform, true);
         }
+
+        // Place characters
+        foreach (var character in World.Characters)
+        {
+            var charGo = new GameObject("CharGo_" + character.Role);
+            charGo.transform.position = VectorHelper.NewVector(character.Position);
+            var sr = charGo.AddComponent<SpriteRenderer>();
+            sr.sprite = spriteList.FirstOrDefault(s => s.name == character.Role.ToLowerInvariant());
+            sr.sortingLayerName = "Characters";
+        }
+
 
     }
 }

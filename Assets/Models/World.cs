@@ -7,7 +7,7 @@ public class World {
     private const int width = 30;
 
     private BankAccount account;
-    private Tile[,] tileMap;
+    public readonly List<Character> Characters;
 
     public World()
     {
@@ -18,9 +18,11 @@ public class World {
         account.Add(100000);
 
         // Create characters
-        Character husband = new Character("Mike", new Position { X = 10, Y = 10 });
-        Character wife = new Character("Amanda", new Position { X = 11, Y = 10 });
-        Character kid = new Character("Zoe", new Position { X = 12, Y = 10 });
+        Characters = new List<Character> {
+            new Character("Mike", "husband", new Position { X = 10, Y = 10 }),
+            new Character("Amanda", "wife", new Position { X = 11, Y = 10 }),
+            new Character("Zoe", "child", new Position { X = 12, Y = 10 })
+        };
 
         // Initialize floor plan (walls, furniture)
 
