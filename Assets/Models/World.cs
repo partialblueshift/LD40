@@ -17,13 +17,6 @@ public class World {
         account = new BankAccount();
         account.Add(100000);
 
-        // Create world tilemap
-        tileMap = MapGenerator.GetWorldMap();
-
-        for (int i = 0; i < width; i++)
-            for (int j = 0; j < height; j++)
-                tileMap[i, j] = new Tile(i, j);
-
         // Create characters
         Character husband = new Character("Mike", new Position { X = 10, Y = 10 });
         Character wife = new Character("Amanda", new Position { X = 11, Y = 10 });
