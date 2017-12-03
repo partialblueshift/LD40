@@ -58,7 +58,8 @@ public class PlayerController : MonoBehaviour
         rigidBody.gravityScale = 0;
         rigidBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
-        var coll = playerGo.AddComponent<Collider2D>();
+        var coll = playerGo.AddComponent<BoxCollider2D>();
+        //coll.
         
 
         playerGo.transform.position = model.Position;
