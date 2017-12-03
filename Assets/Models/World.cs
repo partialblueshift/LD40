@@ -5,12 +5,16 @@ using UnityEngine;
 public sealed class World {
     private BankAccount account;
     public readonly List<NPC> Characters;
+    public Tile[,] TileMap { get; private set; }
 
     private static World instance;
 
     private World()
     {
         Debug.Log("World created");
+
+        // Create world tilemap
+        TileMap = MapGenerator.GetWorldMap();
 
         // Initialize account
         account = new BankAccount();

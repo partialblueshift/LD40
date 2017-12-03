@@ -6,7 +6,6 @@ using UnityEngine;
 public class WorldController : MonoBehaviour {
 
     public World World { get; private set; }
-    private Tile[,] tileMap;
     private GameObject tileMapParentGo;
 
     public List<Sprite> spriteList;
@@ -26,9 +25,7 @@ public class WorldController : MonoBehaviour {
         tileMapParentGo = new GameObject("TileMap");
 
         World = World.Instance;
-
-        // Create world tilemap
-        tileMap = MapGenerator.GetWorldMap();
+        var tileMap = World.TileMap;
 
         foreach (var tile in tileMap)
         {
@@ -41,9 +38,6 @@ public class WorldController : MonoBehaviour {
 
             if (tile.TileType == TileType.Wall)
             {
-                //var collider = tileGo.AddComponent<Collider2D>();
-                //collider.
-
                 var boxCollider = tileGo.AddComponent<BoxCollider2D>();
             }
 
